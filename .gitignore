@@ -60,3 +60,6 @@ build/*
 
 # vim swap files
 *.swp
+
+# testing binaries
+tests/task-cli

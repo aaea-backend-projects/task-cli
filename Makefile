@@ -1,7 +1,11 @@
-all: build utils.o
+all: build utils.o task-cli.o
 
-build: 
+build: src/task-cli.o src/utils.o
 	echo "Running build"
+	gcc src/task-cli.o src/utils.o -o build/task-cli
+
+task-cli.o: src/task-cli.c 
+	gcc -c src/task-cli.c -o src/task-cli.o
 
 utils.o: src/utils.c src/utils.h
 	gcc -c src/utils.c -o src/utils.o
@@ -9,6 +13,8 @@ utils.o: src/utils.c src/utils.h
 test: tests/task-cli.c src/utils.o
 	gcc tests/task-cli.c src/utils.o -rdynamic -o tests/task-cli
 	./tests/task-cli
+run:
+	@./build/task-cli
 
 clean:
 	rm -f *.o tests/task-cli build/*.o tests/*.o

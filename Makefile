@@ -11,5 +11,5 @@ test: tests/task-cli.c src/utils.o
 	./tests/task-cli
 
 clean:
-
+	rm -f *.o tests/task-cli build/*.o tests/*.o
 .PHONY: build

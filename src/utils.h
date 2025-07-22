@@ -2,7 +2,7 @@
 #define UTILS_H
 
 #define TEST_OK(msg) "\x1b[32m" msg "\x1b[0m"
-#define TEST_FUNC_OK(msg) printf("\x1b[32m%s OK\n\x1b[0m", msg)
+#define TEST_FUNC_OK(msg) printf("\x1b[32m%s OK\x1b[0m\n", msg)
 
 /* utils for testing */
 char * parse_function_name(char *raw_name);

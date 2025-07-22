@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "../src/utils.h"
 #include "../src/task.h"
 
@@ -23,12 +24,25 @@ int test_list_one_task() {
         return 1;
     }
     return 0;
-
 }
+
+int test_list_all_task() {
+    task_t *tasks = get_all_tasks();
+    int ok = 0;
+    if(tasks[0].id == 1) {
+        ok++;
+    }
+    if(tasks[1].id==2) {
+        ok++;
+    }
+    free(tasks);
+    return ok;
+}
+
 
 int main() {
     printf("==== STARTING TESTS FOR TASK-CLI ====\n");
-    int total_tests = 3;
+    int total_tests = 4;
     int total_ok_tests = 0;
 
     test_fn(&test_show_usage);
@@ -38,6 +52,9 @@ int main() {
     total_ok_tests++;
     
     test_fn(&test_list_one_task);
+    total_ok_tests++;
+
+    test_fn(&test_list_all_task);
     total_ok_tests++;
 
     printf("==== END TESTS FOR TASK-CLI ====\n");

@@ -1,8 +1,8 @@
 all: build utils.o task-cli.o task.o
 
-build: src/task-cli.o src/utils.o
+build: src/task-cli.o src/utils.o src/task.o
 	echo "Running build"
-	gcc src/task-cli.o src/utils.o -o build/task-cli
+	gcc src/task-cli.o src/utils.o src/task.o -o build/task-cli
 
 task-cli.o: src/task-cli.c 
 	gcc -c src/task-cli.c -o src/task-cli.o

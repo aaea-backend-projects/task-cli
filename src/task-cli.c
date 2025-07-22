@@ -10,6 +10,9 @@ int main(int argc, char *argv[]) {
         printf("%s\n", show_usage());
         return 0;
     }
+    // init "db"
+    task_t *tasks = get_all_tasks();
+
     char * action = argv[1];
     if(strcmp(action, "list") == 0) {
         
@@ -22,12 +25,17 @@ int main(int argc, char *argv[]) {
             } else {
                 printf("Bad input:\n");
             }
+            free(tasks);
             return 0;
         } 
 
         // try print all
+        printf("===== listing all tasks: ======\n");
+        printf("task: %d\n", tasks[0].id);
+        printf("task: %d\n", tasks[1].id);
 
     }
 
+    free(tasks);
     return 0;
 }

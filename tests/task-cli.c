@@ -17,15 +17,27 @@ int test_create_one_task() {
     return 0;
 }
 
+int test_list_one_task() {
+    task_t task = get_task(1);
+    if(task.id == 1) {
+        return 1;
+    }
+    return 0;
+
+}
+
 int main() {
     printf("==== STARTING TESTS FOR TASK-CLI ====\n");
-    int total_tests = 2;
+    int total_tests = 3;
     int total_ok_tests = 0;
 
     test_fn(&test_show_usage);
     total_ok_tests++;
 
     test_fn(&test_create_one_task);
+    total_ok_tests++;
+    
+    test_fn(&test_list_one_task);
     total_ok_tests++;
 
     printf("==== END TESTS FOR TASK-CLI ====\n");
